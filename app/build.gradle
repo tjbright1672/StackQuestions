@@ -1,0 +1,117 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    defaultConfig {
+        applicationId "com.grafschokula.stackquestions"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+
+    lintOptions {
+        abortOnError false
+        disable 'GoogleAppIndexingWarning'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    // Kotlin
+    implementation deps.kotlin.stdlib
+
+    // Support Libraries
+    implementation deps.support.appcompat
+    implementation deps.support.recyclerview
+    implementation deps.material.design
+    implementation deps.constraintlayout.constraintlayout
+    implementation deps.ktx.core
+
+    // Dagger
+    implementation deps.dagger.core
+    implementation deps.dagger.android
+    implementation deps.dagger.android_support
+    kapt deps.dagger.compiler
+    kapt deps.dagger.android_compiler
+
+    // RxJava
+    implementation deps.rxjava2.rxjava
+    implementation deps.rxandroid.rxandroid
+    implementation deps.rxkotlin.rxkotlin
+
+    // Lifecycle
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.extensions
+    implementation deps.lifecycle.java8
+    implementation deps.lifecycle.reactivestreams
+    kapt deps.lifecycle.compiler
+
+    // Retrofit
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.rx_adapter
+    implementation deps.retrofit.gson
+
+    // Okhttp
+    implementation deps.okhttp.okhttp3
+    implementation deps.okhttp.logging
+
+    // Glide
+    implementation deps.glide.glide
+    implementation deps.glide.okhttp
+    kapt deps.glide.compiler
+
+    // Gson
+    implementation deps.gson.gson
+
+    // Paging
+    implementation deps.paging.runtime
+    implementation deps.paging.rxjava
+
+    // Timber
+    implementation deps.timber.timber
+
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+    implementation 'com.jakewharton.rxbinding3:rxbinding:3.0.0-alpha2'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-appcompat:3.0.0-alpha2'
+
+//    implementation 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+//    implementation 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0'
+
+    debugImplementation deps.leakcanary.leakcanary
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
