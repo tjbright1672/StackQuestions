@@ -35,7 +35,7 @@ class QuestionDetailActivity : BaseActivity<ActivityQuestionDetailBinding>() {
 
         viewModel.setUrlLink(urLink)
 
-        addFragmentToActivity(R.id.fragment_container, questionDetailFragment)
+        replaceFragmentInActivity(R.id.fragment_container, questionDetailFragment)
 
     }
 }
